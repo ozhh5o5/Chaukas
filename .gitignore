@@ -22,3 +22,48 @@ supabase/functions/*/deno.log
 # IDE
 .vscode/
 .idea/
+
+# Python virtual environments
+.venv/
+.venv-doc/
+venv/
+env/
+
+# Doc-generation scripts
+gen_*.py
+generate_*.py
+analyze_*.py
+build_chaukas_*.py
+check_doc_*.py
+inspect_doc.py
+
+# Temporary chart images
+c[0-9]_*.png
+chart_*.png
+*_matrix.png
+*_walkthrough.png
+technical_methodology.png
+
+# Deployment helper scripts
+deploy*.sh
+deploy*.ps1
+build.sh
+git_push_deploy.ps1
+verify-deployment.js
+
+# Root-level node_modules and lock (not needed; frontend has its own)
+/node_modules/
+/package-lock.json
+/package.json
+
+# SQL migration scripts
+*.sql
+
+# Scratch files
+payload.json
+tools/
+
+# Word temp files
+~$*.docx
+~$*.xlsx
+
