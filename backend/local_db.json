@@ -1,0 +1,47 @@
+{
+  "incidents": [
+    {
+      "title": "rovers crashed",
+      "description": "",
+      "type": "accident",
+      "latitude": 22.726847267129912,
+      "longitude": 75.90937373287008,
+      "severity": "critical",
+      "status": "pending",
+      "image_url": "http://localhost:8000/uploads/incidents/344530a2-e1ad-4c00-ab45-853748895bcb.png",
+      "ai_analysis": {
+        "severity": "critical",
+        "reasoning": "Standard emergency dispatch protocol.",
+        "resources": [
+          "fire_brigade",
+          "ambulance"
+        ]
+      },
+      "reporter_id": null
+    },
+    {
+      "title": "Multi-vehicle Collision",
+      "description": "Significant vehicular damage detected. Multiple vehicles involved with debris on roadway. Emergency response recommended immediately.",
+      "type": "accident",
+      "latitude": 22.72691562123987,
+      "longitude": 75.90951661496209,
+      "severity": "critical",
+      "status": "dispatched",
+      "image_url": "http://localhost:8000/uploads/incidents/0f1ff1b9-1e15-46bb-acc1-7f54b8fca529.png",
+      "ai_analysis": {
+        "severity": "critical",
+        "reasoning": "Standard emergency dispatch protocol.",
+        "resources": [
+          "fire_brigade",
+          "ambulance"
+        ]
+      },
+      "reporter_id": null,
+      "id": "61946a6b-ea62-4fd6-8977-9c2b5830b920",
+      "created_at": "2026-04-25T08:54:55.294766",
+      "updated_at": "2026-04-25T08:54:55.294784",
+      "reported_at": "2026-04-25T08:54:55.294789",
+      "responder_id": "00000000-0000-0000-0000-000000000001"
+    }
+  ]
+}
