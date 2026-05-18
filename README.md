@@ -62,8 +62,10 @@ India witnesses over **1.5 lakh road accident fatalities annually** — one deat
 
 ### Prerequisites
 - **Node.js** ≥ 18.x
-- **Python** ≥ 3.10
+- **Python**: recommended **3.11 or 3.12** (works best on Windows)
 - **pip** (Python package manager)
+
+> Note: On Windows, using very new Python versions (e.g. 3.14) may force some packages (like `pydantic-core`) to compile from source, which requires Visual Studio C++ Build Tools. If you hit install errors, switch to Python 3.11/3.12.
 
 ### Step 1: Install Dependencies
 
@@ -88,8 +90,13 @@ pip install -r backend/requirements.txt
 ### Step 2: Start the Application
 
 ```bash
-# From the project root directory:
+# Terminal 1 (frontend)
+cd frontend
 npm run dev
+
+# Terminal 2 (backend) — from project root
+# (use your venv python, e.g. .venv\Scripts\python.exe on Windows)
+python -m uvicorn backend.app:app --reload --host 127.0.0.1 --port 8000
 ```
 
 This starts both:

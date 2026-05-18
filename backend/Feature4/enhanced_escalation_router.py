@@ -17,12 +17,19 @@ sys.path.insert(0, str(feature3_dir))
 
 try:
     from context_severity_engine import severity_engine
-    from .outliers_ml_escalation_transition_engine import escalation_engine
 except ImportError as e:
-    print(f"Import error in enhanced escalation router: {e}")
-    # Fallback imports
+    print(f"Import error in enhanced escalation router (Feature3): {e}")
+    severity_engine = None
+
+# Escalation transition engine lives in this feature directory.
+# The previous module name `outliers_ml_escalation_transition_engine` does not exist in this repo.
+try:
+    from .hackvision_ml_escalation_transition_engine import escalation_engine
+except ImportError as e:
+    print(f"Import error in enhanced escalation router (Feature4 engine): {e}")
+    # Fallback import if this module is executed as a script and relative import fails
     try:
-        from outliers_ml_escalation_transition_engine import escalation_engine
+        from hackvision_ml_escalation_transition_engine import escalation_engine
     except ImportError:
         escalation_engine = None
 
@@ -47,6 +54,11 @@ async def auto_escalation_assessment(data: AutoEscalationInput):
     This endpoint fetches severity data automatically and determines escalation state.
     """
     try:
+        if severity_engine is None:
+            raise HTTPException(status_code=503, detail="Live severity engine unavailable")
+        if escalation_engine is None:
+            raise HTTPException(status_code=503, detail="Escalation engine unavailable")
+
         # Fetch live severity data from Feature 3
         severity_result = await severity_engine.compute_live_severity(
             user_id=data.user_id,
@@ -120,6 +132,11 @@ async def manual_escalation_assessment(data: EscalationInput):
     Combines live data with manual inputs.
     """
     try:
+        if severity_engine is None:
+            raise HTTPException(status_code=503, detail="Live severity engine unavailable")
+        if escalation_engine is None:
+            raise HTTPException(status_code=503, detail="Escalation engine unavailable")
+
         # Get live severity data
         severity_result = await severity_engine.compute_live_severity(
             user_id=data.user_id,
