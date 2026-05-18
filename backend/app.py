@@ -369,7 +369,7 @@ async def health():
     }
 
 # --- Mock DB Endpoints for Frontend ---
-from backend.supabase_client import load_db, save_db, UPLOADS_DIR
+from supabase_client import load_db, save_db, UPLOADS_DIR
 from fastapi import Request
 import base64
 import uuid

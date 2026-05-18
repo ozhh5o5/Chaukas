@@ -5,7 +5,10 @@ import os
 import sys
 from pathlib import Path
 from dotenv import load_dotenv
-from backend.supabase_client import create_client, Client
+try:
+    from supabase_client import create_client, Client
+except ImportError:
+    from backend.supabase_client import create_client, Client
 
 # Add base dir for imports if needed
 base_dir = Path(__file__).parent.parent.resolve()

@@ -17,7 +17,10 @@ if str(base_dir) not in sys.path:
     sys.path.insert(0, str(base_dir))
 
 from dotenv import load_dotenv
-from backend.supabase_client import create_client, Client
+try:
+    from supabase_client import create_client, Client
+except ImportError:
+    from backend.supabase_client import create_client, Client
 
 # Load environment variables
 env_path = Path(__file__).parent.parent / '.env'

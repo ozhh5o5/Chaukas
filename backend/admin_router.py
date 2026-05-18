@@ -12,7 +12,10 @@ import os
 from dotenv import load_dotenv
 
 # Use our mock instead of real supabase
-from backend.supabase_client import create_client, Client
+try:
+    from supabase_client import create_client, Client
+except ImportError:
+    from backend.supabase_client import create_client, Client
 
 load_dotenv()
 

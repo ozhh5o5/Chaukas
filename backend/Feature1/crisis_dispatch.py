@@ -11,7 +11,10 @@ from enum import Enum
 import random
 from geopy.distance import geodesic
 from dotenv import load_dotenv
-from backend.supabase_client import create_client, Client
+try:
+    from supabase_client import create_client, Client
+except ImportError:
+    from backend.supabase_client import create_client, Client
 from pathlib import Path
 
 # Add the backend directory to sys.path to ensure imports work in Vercel
