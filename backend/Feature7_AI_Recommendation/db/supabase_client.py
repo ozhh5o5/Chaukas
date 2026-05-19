@@ -17,11 +17,9 @@ logger = logging.getLogger(__name__)
 
 class RecommendationDatabase:
     def __init__(self):
-        supabase_url = os.getenv("SUPABASE_URL")
-        supabase_key = os.getenv("SUPABASE_KEY")
-        
-        if not supabase_url or not supabase_key:
-            raise ValueError("SUPABASE_URL and SUPABASE_KEY must be set")
+        # Use mock fallback values if env vars are not set (works offline without .env)
+        supabase_url = os.getenv("SUPABASE_URL") or "http://localhost"
+        supabase_key = os.getenv("SUPABASE_KEY") or "mock-key"
         
         self.supabase: Client = create_client(supabase_url, supabase_key)
     
